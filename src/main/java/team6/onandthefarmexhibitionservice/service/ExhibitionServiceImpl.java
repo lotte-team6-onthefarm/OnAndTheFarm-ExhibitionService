@@ -348,12 +348,14 @@ public class ExhibitionServiceImpl implements ExhibitionService {
 		List<ExhibitionTemporary> exhibitionTemporaries = (List<ExhibitionTemporary>)exhibitionTemporaryRepository.findAll(Sort.by(Sort.Direction.ASC, "exhibitionTemporaryPriority"));
 		List<ExhibitionTemporaryAllResponse> exhibitionTemporaryAllResponses = new ArrayList<>();
 		for (ExhibitionTemporary exhibitionTemporary : exhibitionTemporaries) {
+			ExhibitionAccount exhibitionAccount = exhibitionAccountRepository.findById(exhibitionTemporary.getExhibitionTemporaryAccountId()).get();
 			ExhibitionTemporaryAllResponse exhibitionTemporaryAllResponse = ExhibitionTemporaryAllResponse.builder()
 					.exhibitionTemporaryId(exhibitionTemporary.getExhibitionTemporaryId())
 					.exhibitionTemporaryCategoryId(exhibitionTemporary.getExhibitionTemporaryCategory().getExhibitionCategoryId())
 					.exhibitionTemporaryModuleName(exhibitionTemporary.getExhibitionTemporaryModuleName())
 					.exhibitionTemporaryDataPicker(exhibitionTemporary.getExhibitionTemporaryDataPicker())
 					.exhibitionTemporaryAccountId(exhibitionTemporary.getExhibitionTemporaryAccountId())
+					.exhibitionTemporaryAccountName(exhibitionAccount.getExhibitionAccountName())
 					.exhibitionTemporaryItemsId(exhibitionTemporary.getExhibitionTemporaryItemsId())
 					.exhibitionTemporaryPriority(exhibitionTemporary.getExhibitionTemporaryPriority())
 					.build();
@@ -367,12 +369,14 @@ public class ExhibitionServiceImpl implements ExhibitionService {
 		List<Exhibition> exhibitions = exhibitionRepository.getTrueExhibitionOrderByPriority();
 		List<ExhibitionAllResponse> exhibitionAllResponses = new ArrayList<>();
 		for(Exhibition e : exhibitions){
+			ExhibitionAccount exhibitionAccount = exhibitionAccountRepository.findById(e.getExhibitionId()).get();
 			ExhibitionAllResponse exhibitionAllResponse = ExhibitionAllResponse.builder()
 					.exhibitionId(e.getExhibitionId())
 					.exhibitionCategoryId(e.getExhibitionCategory().getExhibitionCategoryId())
 					.exhibitionModuleName(e.getExhibitionModuleName())
 					.exhibitionDataPickerId(e.getExhibitionDataPickerId())
 					.exhibitionAccountId(e.getExhibitionAccountId())
+					.exhibitionAccountName(exhibitionAccount.getExhibitionAccountName())
 					.exhibitionItemsId(e.getExhibitionItemsId())
 					.exhibitionPriority(e.getExhibitionPriority())
 					.build();

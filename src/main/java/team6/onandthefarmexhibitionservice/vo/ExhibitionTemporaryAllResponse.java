@@ -22,6 +22,8 @@ public class ExhibitionTemporaryAllResponse {
 
 	private Long exhibitionTemporaryAccountId;
 
+	private String exhibitionTemporaryAccountName;
+
 	private Long exhibitionTemporaryItemsId;
 
 	private Integer exhibitionTemporaryPriority;
