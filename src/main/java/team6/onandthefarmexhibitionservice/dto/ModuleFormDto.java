@@ -1,7 +1,6 @@
 package team6.onandthefarmexhibitionservice.dto;
 
 import javax.validation.constraints.NotBlank;
-import team6.onandthefarmexhibitionservice.entity.Module;
 
 import org.springframework.web.multipart.MultipartFile;
 

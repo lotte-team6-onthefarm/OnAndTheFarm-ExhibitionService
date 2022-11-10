@@ -1,4 +1,4 @@
-package team6.onandthefarmexhibitionservice.entity;
+package team6.onandthefarmexhibitionservice.entity.item;
 
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -9,12 +9,15 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 
+import com.team6.onandthefarm.entity.exhibition.ExhibitionAccount;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
+import team6.onandthefarmexhibitionservice.entity.ExhibitionAccount;
 
 @Builder
 @Slf4j

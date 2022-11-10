@@ -1,4 +1,4 @@
-package team6.onandthefarmexhibitionservice.entity;
+package team6.onandthefarmexhibitionservice.entity.item;
 
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
