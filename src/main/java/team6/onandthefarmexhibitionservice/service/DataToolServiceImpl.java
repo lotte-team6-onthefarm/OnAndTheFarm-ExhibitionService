@@ -23,9 +23,12 @@ import team6.onandthefarmexhibitionservice.entity.item.ExhibitionItem;
 import team6.onandthefarmexhibitionservice.entity.item.ExhibitionItems;
 import team6.onandthefarmexhibitionservice.feignclient.MemberServiceClient;
 import team6.onandthefarmexhibitionservice.feignclient.ProductServiceClient;
+import team6.onandthefarmexhibitionservice.feignclient.SnsServiceClient;
+import team6.onandthefarmexhibitionservice.feignclient.vo.FeedInfoVo;
 import team6.onandthefarmexhibitionservice.feignclient.vo.ProductVo;
 import team6.onandthefarmexhibitionservice.feignclient.vo.ReviewInfoToExbt;
 import team6.onandthefarmexhibitionservice.feignclient.vo.SellerClientSellerDetailResponse;
+import team6.onandthefarmexhibitionservice.feignclient.vo.UserClientUserShortInfoResponse;
 import team6.onandthefarmexhibitionservice.feignclient.vo.WishVo;
 import team6.onandthefarmexhibitionservice.repository.DataPickerRepository;
 import team6.onandthefarmexhibitionservice.repository.ExhibitionAccountRepository;
@@ -63,6 +66,7 @@ public class DataToolServiceImpl implements DataToolService{
 	private BadgeRepository badgeRepository;
 	private final ProductServiceClient productServiceClient;
 	private final MemberServiceClient memberServiceClient;
+	private final SnsServiceClient snsServiceClient;
 	private DateUtils dateUtils;
 	private Environment env;
 
@@ -79,6 +83,7 @@ public class DataToolServiceImpl implements DataToolService{
 			BadgeRepository badgeRepository,
 			ProductServiceClient productServiceClient,
 			MemberServiceClient memberServiceClient,
+			SnsServiceClient snsServiceClient,
 			DateUtils dateUtils, Environment env) {
 		this.exhibitionAccountRepository = exhibitionAccountRepository;
 		this.exhibitionCategoryRepository = exhibitionCategoryRepository;
@@ -88,8 +93,10 @@ public class DataToolServiceImpl implements DataToolService{
 		this.dataPickerRepository = dataPickerRepository;
 		this.bannerRepository = bannerRepository;
 		this.badgeRepository = badgeRepository;
+		this.snsServiceClient = snsServiceClient;
 		this.productServiceClient = productServiceClient;
 		this.memberServiceClient = memberServiceClient;
+
 		this.dateUtils = dateUtils;
 		this.env = env;
 	}
@@ -106,7 +113,7 @@ public class DataToolServiceImpl implements DataToolService{
 			ProductVo product = productServiceClient.findProductByProductId(item.getExhibitionItemNumber());
 
 			ReviewInfoToExbt reviewInfoToExbt = productServiceClient.getReviewsInfoProductId(product.getProductId());
-			SellerClientSellerDetailResponse sellerClientSellerDetailResponse = memberServiceClient.findBySellerId(product.getSellerId());
+			SellerClientSellerDetailResponse sellerClientSellerDetailResponse = memberServiceClient.findBySellerIdFromExhibition(product.getSellerId());
 
 			ProductATypeResponse productATypeResponse = ProductATypeResponse.builder()
 					.productId(product.getProductId())
@@ -221,7 +228,7 @@ public class DataToolServiceImpl implements DataToolService{
 		Collections.sort(items, exhibitionItemComparator);
 		for (ExhibitionItem item : items) {
 			ProductVo product = productServiceClient.findProductByProductId(item.getExhibitionItemNumber());
-			SellerClientSellerDetailResponse sellerClientSellerDetailResponse = memberServiceClient.findBySellerId(product.getSellerId());
+			SellerClientSellerDetailResponse sellerClientSellerDetailResponse = memberServiceClient.findBySellerIdFromExhibition(product.getSellerId());
 
 			ProductCTypeResponse productCTypeResponse = ProductCTypeResponse.builder()
 					.productId(product.getProductId())
@@ -247,16 +254,16 @@ public class DataToolServiceImpl implements DataToolService{
 		List<ExhibitionItem> items = exhibitionItemRepository.findExhibitionItemByExhibitionItemsId(exhibitionItems.getExhibitionItemsId());
 		Collections.sort(items, exhibitionItemComparator);
 		for (ExhibitionItem item : items) {
-			Feed feed = feedRepository.findById(item.getExhibitionItemNumber()).get();
+			FeedInfoVo feed = snsServiceClient.findFeedInfoVoByFeedId(item.getExhibitionItemNumber());
 			String memberName = "";
-			Optional<User> user = userRepository.findById(feed.getMemberId());
-			if(user.isPresent()){
-				memberName = user.get().getUserName();
+			UserClientUserShortInfoResponse user = memberServiceClient.findUserNameByUserId(feed.getMemberId());
+			if(user != null){
+				memberName = user.getUserName();
 			} else{
-				Seller seller = sellerRepository.findById(feed.getMemberId()).get();
+				SellerClientSellerDetailResponse seller = memberServiceClient.findBySellerIdFromExhibition(feed.getMemberId());
 				memberName = seller.getSellerName();
 			}
-			String feedImageSrc = feedImageRepository.findByFeed(feed).get(0).getFeedImageSrc();
+			String feedImageSrc = snsServiceClient.findFeedImgVoByFeedId(feed.getFeedId()).getFeedImageSrc();
 
 			SnsATypeResponse snsATypeResponse = SnsATypeResponse.builder()
 					.feedId(feed.getFeedId())

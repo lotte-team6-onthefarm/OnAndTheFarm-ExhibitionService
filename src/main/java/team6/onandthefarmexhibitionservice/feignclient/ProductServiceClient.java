@@ -22,5 +22,5 @@ public interface ProductServiceClient {
 	public boolean getWishByProductUserId(Long productId, Long userId);
 
 	@GetMapping("/api/feign/user/product/product-service/cart")
-	public boolean getCartByProductUserId(Long productId, Long userId)
+	public boolean getCartByProductUserId(Long productId, Long userId);
 }
