@@ -6,7 +6,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
 
-import team6.onandthefarmexhibitionservice.entity.ExhibitionItem;
+import team6.onandthefarmexhibitionservice.entity.item.ExhibitionItem;
 
 public interface ExhibitionItemRepository extends CrudRepository<ExhibitionItem, Long> {    // 소재 데이터 수 불러오기
     @Query("select p from ExhibitionItem p where p.exhibitionItems.exhibitionItemsId =:exhibitionItemsId")

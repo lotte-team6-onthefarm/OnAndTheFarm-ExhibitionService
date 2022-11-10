@@ -1,0 +1,21 @@
+package team6.onandthefarmexhibitionservice.service;
+
+import team6.onandthefarmexhibitionservice.dto.datatool.BadgeDataRequestDto;
+import team6.onandthefarmexhibitionservice.dto.datatool.BannerDataRequestDto;
+import team6.onandthefarmexhibitionservice.dto.datatool.ProductDataRequestDto;
+import team6.onandthefarmexhibitionservice.dto.datatool.SnsDataRequestDto;
+import team6.onandthefarmexhibitionservice.vo.datatool.BadgeATypeResponses;
+import team6.onandthefarmexhibitionservice.vo.datatool.BannerATypeResponses;
+import team6.onandthefarmexhibitionservice.vo.datatool.ProductATypeResponses;
+import team6.onandthefarmexhibitionservice.vo.datatool.ProductBTypeResponses;
+import team6.onandthefarmexhibitionservice.vo.datatool.ProductCTypeResponses;
+import team6.onandthefarmexhibitionservice.vo.datatool.SnsATypeResponses;
+
+public interface DataToolService {
+	BannerATypeResponses getBannerATypeItems(BannerDataRequestDto bannerDataRequestDto);
+	BadgeATypeResponses getBadgeATypeItems(BadgeDataRequestDto badgeDataRequestDto);
+	ProductATypeResponses getProductATypeItems(ProductDataRequestDto productDataRequestDto, Long userId);
+	ProductBTypeResponses getProductBTypeItems(ProductDataRequestDto productDataRequestDto, Long userId);
+	ProductCTypeResponses getProductCTypeItems(ProductDataRequestDto productDataRequestDto, Long serId);
+	SnsATypeResponses getSnsATypeItems(SnsDataRequestDto snsDataRequestDto);
+}

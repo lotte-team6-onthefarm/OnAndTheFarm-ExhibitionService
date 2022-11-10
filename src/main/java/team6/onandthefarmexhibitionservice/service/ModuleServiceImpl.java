@@ -15,7 +15,8 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import team6.onandthefarmexhibitionservice.entity.Module;
+
+
 import lombok.extern.slf4j.Slf4j;
 import team6.onandthefarmexhibitionservice.dto.ModuleFormDto;
 import team6.onandthefarmexhibitionservice.repository.ModuleImgRepository;
@@ -26,11 +27,12 @@ import team6.onandthefarmexhibitionservice.util.S3Upload;
 import team6.onandthefarmexhibitionservice.vo.ModuleSelectionResponse;
 import team6.onandthefarmexhibitionservice.vo.ModuleSelectionResponseResult;
 import team6.onandthefarmexhibitionservice.vo.PageVo;
+import team6.onandthefarmexhibitionservice.entity.Module;
 
 @Service
 @Transactional
 @Slf4j
-public class ModuleServiceImpl implements ModuleService {
+public class ModuleServiceImpl implements ModuleService{
     private final ModuleRepository moduleRepository;
 
     private final ModulePagingRepository modulePagingRepository;

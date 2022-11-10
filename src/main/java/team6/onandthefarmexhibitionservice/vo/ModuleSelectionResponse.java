@@ -5,7 +5,6 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import team6.onandthefarmexhibitionservice.entity.Module;
 
 @Getter
 @Setter
@@ -36,6 +35,7 @@ public class ModuleSelectionResponse {
     private String moduleDevelopModifiedAt;
 
     public ModuleSelectionResponse(Module module){
+        this.moduleId = module.getModuleId();
         this.moduleId = module.getModuleId();
 
         this.moduleName = module.getModuleName();

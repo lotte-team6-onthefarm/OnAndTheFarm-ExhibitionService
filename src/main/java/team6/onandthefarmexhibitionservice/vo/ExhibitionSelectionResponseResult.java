@@ -2,7 +2,6 @@ package team6.onandthefarmexhibitionservice.vo;
 
 import java.util.List;
 
-import com.team6.onandthefarm.vo.PageVo;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

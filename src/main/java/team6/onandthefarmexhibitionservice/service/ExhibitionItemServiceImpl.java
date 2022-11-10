@@ -8,8 +8,6 @@ import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-
-
 import lombok.extern.slf4j.Slf4j;
 import team6.onandthefarmexhibitionservice.dto.item.BadgeFormRequestDto;
 import team6.onandthefarmexhibitionservice.dto.item.BannerFormRequestDto;

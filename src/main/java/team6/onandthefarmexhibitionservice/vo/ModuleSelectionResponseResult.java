@@ -2,6 +2,8 @@ package team6.onandthefarmexhibitionservice.vo;
 
 import java.util.List;
 
+import com.team6.onandthefarm.vo.PageVo;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -14,6 +16,6 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 public class ModuleSelectionResponseResult {
-    private List<ModuleSelectionResponse> moduleListResponses;
+    private List<com.team6.onandthefarm.vo.exhibition.ModuleSelectionResponse> moduleListResponses;
     private PageVo pageVo;
 }

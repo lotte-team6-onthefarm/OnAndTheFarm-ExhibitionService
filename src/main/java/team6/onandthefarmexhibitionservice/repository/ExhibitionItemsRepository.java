@@ -6,7 +6,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
 
-import team6.onandthefarmexhibitionservice.entity.ExhibitionItems;
+import team6.onandthefarmexhibitionservice.entity.item.ExhibitionItems;
 
 public interface ExhibitionItemsRepository extends CrudRepository<ExhibitionItems, Long> {
 

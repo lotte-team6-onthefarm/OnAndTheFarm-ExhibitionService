@@ -1,6 +1,5 @@
 package team6.onandthefarmexhibitionservice.repository;
 
-import team6.onandthefarmexhibitionservice.entity.Module;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.jpa.repository.Query;
