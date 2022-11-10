@@ -22,6 +22,8 @@ public class ExhibitionAllResponse {
 
 	private Long exhibitionAccountId;
 
+	private String exhibitionAccountName;
+
 	private Long exhibitionItemsId;
 
 	private Integer exhibitionPriority;
