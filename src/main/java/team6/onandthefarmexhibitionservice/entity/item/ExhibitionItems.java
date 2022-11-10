@@ -9,7 +9,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 
-import com.team6.onandthefarm.entity.exhibition.ExhibitionAccount;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
