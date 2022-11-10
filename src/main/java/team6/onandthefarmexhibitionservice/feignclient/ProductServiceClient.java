@@ -1,14 +1,13 @@
 package team6.onandthefarmexhibitionservice.feignclient;
 
-import java.util.Optional;
 
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import team6.onandthefarmexhibitionservice.feignclient.vo.ProductVo;
 import team6.onandthefarmexhibitionservice.feignclient.vo.ReviewInfoToExbt;
-import team6.onandthefarmexhibitionservice.feignclient.vo.WishVo;
 
 @FeignClient(name = "product-service", contextId = "product-service-user")
 public interface ProductServiceClient {
@@ -19,8 +18,8 @@ public interface ProductServiceClient {
 	public ReviewInfoToExbt getReviewsInfoProductId(@PathVariable("product-no") Long productId);
 
 	@GetMapping("/api/feign/user/product/product-service/wish")
-	public boolean getWishByProductUserId(Long productId, Long userId);
+	public boolean getWishByProductUserId(@RequestParam Long productId, @RequestParam Long userId);
 
 	@GetMapping("/api/feign/user/product/product-service/cart")
-	public boolean getCartByProductUserId(Long productId, Long userId);
+	public boolean getCartByProductUserId(@RequestParam Long productId, @RequestParam Long userId);
 }
