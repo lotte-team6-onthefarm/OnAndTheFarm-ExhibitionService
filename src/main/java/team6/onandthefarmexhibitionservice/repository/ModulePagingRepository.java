@@ -5,6 +5,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.stereotype.Repository;
+import team6.onandthefarmexhibitionservice.entity.Module;
 
 @Repository
 public interface ModulePagingRepository extends PagingAndSortingRepository<Module, Long> {

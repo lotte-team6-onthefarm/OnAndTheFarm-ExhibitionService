@@ -16,15 +16,16 @@ import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.team6.onandthefarm.dto.exhibition.ModuleFormDto;
-import com.team6.onandthefarm.service.exhibition.ModuleService;
-import com.team6.onandthefarm.util.BaseResponse;
-import com.team6.onandthefarm.vo.exhibition.ModuleFormRequest;
-import com.team6.onandthefarm.vo.exhibition.ModuleSelectionResponse;
-import com.team6.onandthefarm.vo.exhibition.ModuleSelectionResponseResult;
+
 
 import io.swagger.annotations.ApiOperation;
 import springfox.documentation.annotations.ApiIgnore;
+import team6.onandthefarmexhibitionservice.dto.ModuleFormDto;
+import team6.onandthefarmexhibitionservice.service.ModuleService;
+import team6.onandthefarmexhibitionservice.util.BaseResponse;
+import team6.onandthefarmexhibitionservice.vo.ModuleFormRequest;
+import team6.onandthefarmexhibitionservice.vo.ModuleSelectionResponse;
+import team6.onandthefarmexhibitionservice.vo.ModuleSelectionResponseResult;
 
 @RestController
 @RequestMapping("/api/admin/module")
@@ -42,7 +43,7 @@ public class ModuleController {
     public ResponseEntity<BaseResponse<Module>> moduleForm(
             @ApiIgnore Principal principal,
             @RequestPart(value = "image", required = false) MultipartFile photo,
-            @RequestPart(value = "data", required = false)ModuleFormRequest moduleFormRequest
+            @RequestPart(value = "data", required = false) ModuleFormRequest moduleFormRequest
     ) throws Exception {
         if(principal == null){
             BaseResponse baseResponse = BaseResponse.builder()
