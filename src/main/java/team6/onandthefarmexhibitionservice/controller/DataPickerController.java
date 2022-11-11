@@ -1,11 +1,13 @@
 package team6.onandthefarmexhibitionservice.controller;
 
 import java.security.Principal;
+import java.util.List;
 
 import org.modelmapper.ModelMapper;
 import org.modelmapper.convention.MatchingStrategies;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,6 +22,7 @@ import team6.onandthefarmexhibitionservice.entity.DataPicker;
 import team6.onandthefarmexhibitionservice.service.ExhibitionService;
 import team6.onandthefarmexhibitionservice.util.BaseResponse;
 import team6.onandthefarmexhibitionservice.vo.DataPickerFormRequest;
+import team6.onandthefarmexhibitionservice.vo.datatool.DataPickerResponse;
 
 @RestController
 @RequestMapping("/api/admin/data-picker")
@@ -47,5 +50,19 @@ public class DataPickerController {
 				.build();
 
 		return new ResponseEntity(baseResponse, HttpStatus.CREATED);
+	}
+
+	@GetMapping(value = "/get/all")
+	@ApiOperation(value = "데이터툴 전부 조회")
+	public ResponseEntity<BaseResponse<List<DataPickerResponse>>> getAllDataPicker(){
+		List<DataPickerResponse> dataPickerResponses = exhibitionService.getAllDataPicker();
+
+		BaseResponse baseResponse = BaseResponse.builder()
+				.httpStatus(HttpStatus.OK)
+				.message("DataPicker GET All")
+				.data(dataPickerResponses)
+				.build();
+
+		return new ResponseEntity<>(baseResponse, HttpStatus.OK);
 	}
 }
