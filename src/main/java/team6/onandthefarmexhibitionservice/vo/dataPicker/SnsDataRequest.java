@@ -1,4 +1,4 @@
-package team6.onandthefarmexhibitionservice.vo.datatool;
+package team6.onandthefarmexhibitionservice.vo.dataPicker;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -11,9 +11,7 @@ import lombok.Setter;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class BadgeATypeResponse {
-	private String ImgSrc;
-	private String connectUrl;
-	private String badgeName;
-	private Integer priority;
+public class SnsDataRequest {
+	private Long dataToolId;
+	private Long ItemsId;
 }

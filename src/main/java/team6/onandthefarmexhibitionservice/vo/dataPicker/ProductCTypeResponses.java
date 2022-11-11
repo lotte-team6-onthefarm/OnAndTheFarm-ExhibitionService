@@ -1,4 +1,6 @@
-package team6.onandthefarmexhibitionservice.vo.datatool;
+package team6.onandthefarmexhibitionservice.vo.dataPicker;
+
+import java.util.List;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -11,8 +13,6 @@ import lombok.Setter;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class BannerATypeResponse {
-	private String ImgSrc;
-	private String connectUrl;
-	private Integer priority;
+public class ProductCTypeResponses implements ProductResponses{
+	List<ProductCTypeResponse> productCTypeResponses;
 }

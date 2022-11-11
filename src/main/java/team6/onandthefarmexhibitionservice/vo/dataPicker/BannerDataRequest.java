@@ -1,4 +1,4 @@
-package team6.onandthefarmexhibitionservice.vo.datatool;
+package team6.onandthefarmexhibitionservice.vo.dataPicker;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -11,7 +11,7 @@ import lombok.Setter;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class BadgeDataRequest {
+public class BannerDataRequest {
 	private Long dataToolId;
 	private Long ItemsId;
 }

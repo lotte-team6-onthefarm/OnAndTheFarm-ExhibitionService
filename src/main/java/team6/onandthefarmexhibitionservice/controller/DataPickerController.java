@@ -22,7 +22,7 @@ import team6.onandthefarmexhibitionservice.entity.DataPicker;
 import team6.onandthefarmexhibitionservice.service.ExhibitionService;
 import team6.onandthefarmexhibitionservice.util.BaseResponse;
 import team6.onandthefarmexhibitionservice.vo.DataPickerFormRequest;
-import team6.onandthefarmexhibitionservice.vo.datatool.DataPickerResponse;
+import team6.onandthefarmexhibitionservice.vo.dataPicker.DataPickerResponse;
 
 @RestController
 @RequestMapping("/api/admin/data-picker")

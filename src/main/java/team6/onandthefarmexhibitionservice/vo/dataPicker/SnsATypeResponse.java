@@ -1,6 +1,4 @@
-package team6.onandthefarmexhibitionservice.vo.datatool;
-
-import java.util.List;
+package team6.onandthefarmexhibitionservice.vo.dataPicker;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -13,6 +11,9 @@ import lombok.Setter;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class SnsATypeResponses implements SnsResponses{
-	List<SnsATypeResponse> snsATypeResponses;
+public class SnsATypeResponse {
+	private Long feedId;
+	private String memberName;
+	private String feedImageSrc;
 }
+

@@ -22,14 +22,14 @@ import team6.onandthefarmexhibitionservice.dto.datatool.ProductDataRequestDto;
 import team6.onandthefarmexhibitionservice.dto.datatool.SnsDataRequestDto;
 import team6.onandthefarmexhibitionservice.service.DataToolService;
 import team6.onandthefarmexhibitionservice.util.BaseResponse;
-import team6.onandthefarmexhibitionservice.vo.datatool.BadgeDataRequest;
-import team6.onandthefarmexhibitionservice.vo.datatool.BadgeResponses;
-import team6.onandthefarmexhibitionservice.vo.datatool.BannerDataRequest;
-import team6.onandthefarmexhibitionservice.vo.datatool.BannerResponses;
-import team6.onandthefarmexhibitionservice.vo.datatool.ProductDataRequest;
-import team6.onandthefarmexhibitionservice.vo.datatool.ProductResponses;
-import team6.onandthefarmexhibitionservice.vo.datatool.SnsDataRequest;
-import team6.onandthefarmexhibitionservice.vo.datatool.SnsResponses;
+import team6.onandthefarmexhibitionservice.vo.dataPicker.BadgeDataRequest;
+import team6.onandthefarmexhibitionservice.vo.dataPicker.BadgeResponses;
+import team6.onandthefarmexhibitionservice.vo.dataPicker.BannerDataRequest;
+import team6.onandthefarmexhibitionservice.vo.dataPicker.BannerResponses;
+import team6.onandthefarmexhibitionservice.vo.dataPicker.ProductDataRequest;
+import team6.onandthefarmexhibitionservice.vo.dataPicker.ProductResponses;
+import team6.onandthefarmexhibitionservice.vo.dataPicker.SnsDataRequest;
+import team6.onandthefarmexhibitionservice.vo.dataPicker.SnsResponses;
 
 @RestController
 @RequestMapping("/api/user/data-call")

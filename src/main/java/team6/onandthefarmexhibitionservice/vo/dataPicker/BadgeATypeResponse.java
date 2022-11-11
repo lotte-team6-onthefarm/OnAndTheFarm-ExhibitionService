@@ -1,6 +1,4 @@
-package team6.onandthefarmexhibitionservice.vo.datatool;
-
-import java.util.List;
+package team6.onandthefarmexhibitionservice.vo.dataPicker;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -13,6 +11,9 @@ import lombok.Setter;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class ProductBTypeResponses implements ProductResponses {
-	private List<ProductBTypeResponse> bTypeResponses;
+public class BadgeATypeResponse {
+	private String ImgSrc;
+	private String connectUrl;
+	private String badgeName;
+	private Integer priority;
 }
