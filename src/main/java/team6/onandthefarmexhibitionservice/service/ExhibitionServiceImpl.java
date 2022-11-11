@@ -58,6 +58,7 @@ import team6.onandthefarmexhibitionservice.vo.ExhibitionSelectionResponse;
 import team6.onandthefarmexhibitionservice.vo.ExhibitionSelectionResponseResult;
 import team6.onandthefarmexhibitionservice.vo.ExhibitionTemporaryAllResponse;
 import team6.onandthefarmexhibitionservice.vo.PageVo;
+import team6.onandthefarmexhibitionservice.vo.datatool.DataPickerResponse;
 
 @Service
 @Transactional
@@ -369,7 +370,7 @@ public class ExhibitionServiceImpl implements ExhibitionService {
 		List<Exhibition> exhibitions = exhibitionRepository.getTrueExhibitionOrderByPriority();
 		List<ExhibitionAllResponse> exhibitionAllResponses = new ArrayList<>();
 		for(Exhibition e : exhibitions){
-			ExhibitionAccount exhibitionAccount = exhibitionAccountRepository.findById(e.getExhibitionId()).get();
+			ExhibitionAccount exhibitionAccount = exhibitionAccountRepository.findById(e.getExhibitionAccountId()).get();
 			ExhibitionAllResponse exhibitionAllResponse = ExhibitionAllResponse.builder()
 					.exhibitionId(e.getExhibitionId())
 					.exhibitionCategoryId(e.getExhibitionCategory().getExhibitionCategoryId())
@@ -466,6 +467,22 @@ public class ExhibitionServiceImpl implements ExhibitionService {
 		}
 
 		return exhibitionIds;
+	}
 
+	@Override
+	public List<DataPickerResponse> getAllDataPicker(){
+		List<DataPickerResponse> result = new ArrayList<>();
+
+		List<DataPicker> dataPickers = dataPickerRepository.findAllOrderByDataPickerCreatedAt();
+
+		for (DataPicker dataPicker : dataPickers) {
+			DataPickerResponse dataPickerResponse = DataPickerResponse.builder()
+					.dataPickerId(dataPicker.getDataPickerId())
+					.dataPickerName(dataPicker.getDataPickerName())
+					.build();
+			result.add(dataPickerResponse);
+		}
+
+		return result;
 	}
 }
