@@ -473,7 +473,7 @@ public class ExhibitionServiceImpl implements ExhibitionService {
 	public List<DataPickerResponse> getAllDataPicker(){
 		List<DataPickerResponse> result = new ArrayList<>();
 
-		List<DataPicker> dataPickers = dataPickerRepository.findAllOrderByDataPickerCreatedAt();
+		List<DataPicker> dataPickers = (List<DataPicker>)dataPickerRepository.findAll();
 
 		for (DataPicker dataPicker : dataPickers) {
 			DataPickerResponse dataPickerResponse = DataPickerResponse.builder()
