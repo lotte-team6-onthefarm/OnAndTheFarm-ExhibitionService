@@ -58,7 +58,7 @@ import team6.onandthefarmexhibitionservice.vo.ExhibitionSelectionResponse;
 import team6.onandthefarmexhibitionservice.vo.ExhibitionSelectionResponseResult;
 import team6.onandthefarmexhibitionservice.vo.ExhibitionTemporaryAllResponse;
 import team6.onandthefarmexhibitionservice.vo.PageVo;
-import team6.onandthefarmexhibitionservice.vo.datatool.DataPickerResponse;
+import team6.onandthefarmexhibitionservice.vo.dataPicker.DataPickerResponse;
 
 @Service
 @Transactional
@@ -473,7 +473,7 @@ public class ExhibitionServiceImpl implements ExhibitionService {
 	public List<DataPickerResponse> getAllDataPicker(){
 		List<DataPickerResponse> result = new ArrayList<>();
 
-		List<DataPicker> dataPickers = dataPickerRepository.findAllOrderByDataPickerCreatedAt();
+		List<DataPicker> dataPickers = (List<DataPicker>)dataPickerRepository.findAll();
 
 		for (DataPicker dataPicker : dataPickers) {
 			DataPickerResponse dataPickerResponse = DataPickerResponse.builder()

@@ -21,7 +21,7 @@ import team6.onandthefarmexhibitionservice.vo.ExhibitionItemsInfoResponse;
 import team6.onandthefarmexhibitionservice.vo.ExhibitionSelectionResponseResult;
 import team6.onandthefarmexhibitionservice.vo.ExhibitionTemporaryAllResponse;
 import team6.onandthefarmexhibitionservice.vo.ExhibitionAllResponse;
-import team6.onandthefarmexhibitionservice.vo.datatool.DataPickerResponse;
+import team6.onandthefarmexhibitionservice.vo.dataPicker.DataPickerResponse;
 
 public interface ExhibitionService {
 	Long createExhibitionAccount(ExhibitionAccountFormDto exhibitionAccountFormDto);

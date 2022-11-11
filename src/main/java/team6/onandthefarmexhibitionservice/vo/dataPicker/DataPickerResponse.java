@@ -1,6 +1,4 @@
-package team6.onandthefarmexhibitionservice.vo.datatool;
-
-import java.util.List;
+package team6.onandthefarmexhibitionservice.vo.dataPicker;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -13,6 +11,7 @@ import lombok.Setter;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class ProductATypeResponses implements ProductResponses {
-	List<ProductATypeResponse> productATypeResponses;
+public class DataPickerResponse {
+	private Long dataPickerId;
+	private String dataPickerName;
 }

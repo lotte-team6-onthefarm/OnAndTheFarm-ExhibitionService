@@ -4,12 +4,12 @@ import team6.onandthefarmexhibitionservice.dto.datatool.BadgeDataRequestDto;
 import team6.onandthefarmexhibitionservice.dto.datatool.BannerDataRequestDto;
 import team6.onandthefarmexhibitionservice.dto.datatool.ProductDataRequestDto;
 import team6.onandthefarmexhibitionservice.dto.datatool.SnsDataRequestDto;
-import team6.onandthefarmexhibitionservice.vo.datatool.BadgeATypeResponses;
-import team6.onandthefarmexhibitionservice.vo.datatool.BannerATypeResponses;
-import team6.onandthefarmexhibitionservice.vo.datatool.ProductATypeResponses;
-import team6.onandthefarmexhibitionservice.vo.datatool.ProductBTypeResponses;
-import team6.onandthefarmexhibitionservice.vo.datatool.ProductCTypeResponses;
-import team6.onandthefarmexhibitionservice.vo.datatool.SnsATypeResponses;
+import team6.onandthefarmexhibitionservice.vo.dataPicker.BadgeATypeResponses;
+import team6.onandthefarmexhibitionservice.vo.dataPicker.BannerATypeResponses;
+import team6.onandthefarmexhibitionservice.vo.dataPicker.ProductATypeResponses;
+import team6.onandthefarmexhibitionservice.vo.dataPicker.ProductBTypeResponses;
+import team6.onandthefarmexhibitionservice.vo.dataPicker.ProductCTypeResponses;
+import team6.onandthefarmexhibitionservice.vo.dataPicker.SnsATypeResponses;
 
 public interface DataToolService {
 	BannerATypeResponses getBannerATypeItems(BannerDataRequestDto bannerDataRequestDto);

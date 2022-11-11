@@ -1,4 +1,6 @@
-package team6.onandthefarmexhibitionservice.vo.datatool;
+package team6.onandthefarmexhibitionservice.vo.dataPicker;
+
+import java.util.List;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -11,7 +13,6 @@ import lombok.Setter;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class SnsDataRequest {
-	private Long dataToolId;
-	private Long ItemsId;
+public class ProductBTypeResponses implements ProductResponses {
+	private List<ProductBTypeResponse> bTypeResponses;
 }
