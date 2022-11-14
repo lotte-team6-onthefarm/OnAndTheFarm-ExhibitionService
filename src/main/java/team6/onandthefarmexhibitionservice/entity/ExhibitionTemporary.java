@@ -42,6 +42,10 @@ public class ExhibitionTemporary {
 
 	private Long exhibitionTemporaryDataPicker;
 
+	private Long exhibitionTemporaryStartTime;
+
+	private Long exhibitionTemporaryEndTime;
+
 	private Long exhibitionTemporaryAccountId;
 
 	private Long exhibitionTemporaryItemsId;

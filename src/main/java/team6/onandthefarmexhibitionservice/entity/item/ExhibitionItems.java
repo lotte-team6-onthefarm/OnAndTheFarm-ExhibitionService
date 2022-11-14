@@ -43,4 +43,9 @@ public class ExhibitionItems {
 	private String exhibitionItemsName;
 
 	private String exhibitionItemsDetail;
+
+	private String exhibitionItemsStartTime;
+
+	private String exhibitionItemsEndTime;
+
 }
