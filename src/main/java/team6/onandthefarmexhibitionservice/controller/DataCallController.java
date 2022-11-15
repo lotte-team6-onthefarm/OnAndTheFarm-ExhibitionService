@@ -1,16 +1,13 @@
 package team6.onandthefarmexhibitionservice.controller;
 
 import java.security.Principal;
+import java.util.Map;
 
 import org.modelmapper.ModelMapper;
 import org.modelmapper.convention.MatchingStrategies;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-
+import org.springframework.web.bind.annotation.*;
 
 
 import io.swagger.annotations.ApiOperation;
@@ -22,13 +19,9 @@ import team6.onandthefarmexhibitionservice.dto.datatool.ProductDataRequestDto;
 import team6.onandthefarmexhibitionservice.dto.datatool.SnsDataRequestDto;
 import team6.onandthefarmexhibitionservice.service.DataToolService;
 import team6.onandthefarmexhibitionservice.util.BaseResponse;
-import team6.onandthefarmexhibitionservice.vo.dataPicker.BadgeDataRequest;
 import team6.onandthefarmexhibitionservice.vo.dataPicker.BadgeResponses;
-import team6.onandthefarmexhibitionservice.vo.dataPicker.BannerDataRequest;
 import team6.onandthefarmexhibitionservice.vo.dataPicker.BannerResponses;
-import team6.onandthefarmexhibitionservice.vo.dataPicker.ProductDataRequest;
 import team6.onandthefarmexhibitionservice.vo.dataPicker.ProductResponses;
-import team6.onandthefarmexhibitionservice.vo.dataPicker.SnsDataRequest;
 import team6.onandthefarmexhibitionservice.vo.dataPicker.SnsResponses;
 
 @RestController
@@ -40,12 +33,12 @@ public class DataCallController {
 	@GetMapping(value = "/banner")
 	@ApiOperation(value = "배너 데이터 호출")
 	public ResponseEntity<BaseResponse<BannerResponses>> getBannerItems(
-			@RequestBody BannerDataRequest bannerDataRequest){
-		
-		ModelMapper modelMapper = new ModelMapper();
-		modelMapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STRICT);
+			@RequestParam Map<String, String> request){
 
-		BannerDataRequestDto bannerDataRequestDto = modelMapper.map(bannerDataRequest, BannerDataRequestDto.class);
+		BannerDataRequestDto bannerDataRequestDto = BannerDataRequestDto.builder()
+				.ItemsId(Long.parseLong(request.get("ItemsId")))
+				.dataToolId(Long.parseLong(request.get("dataToolId")))
+				.build();
 
 		BannerResponses bannerResponses = null;
 
@@ -65,11 +58,12 @@ public class DataCallController {
 	@GetMapping(value = "/badge")
 	@ApiOperation(value = "뱃지 데이터 호출")
 	public ResponseEntity<BaseResponse<BadgeResponses>> getBadgeItems(
-			@RequestBody BadgeDataRequest badgeDataRequest){
-		ModelMapper modelMapper = new ModelMapper();
-		modelMapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STRICT);
+			@RequestParam Map<String, String> request){
 
-		BadgeDataRequestDto badgeDataRequestDto = modelMapper.map(badgeDataRequest, BadgeDataRequestDto.class);
+		BadgeDataRequestDto badgeDataRequestDto = BadgeDataRequestDto.builder()
+				.ItemsId(Long.parseLong(request.get("ItemsId")))
+				.dataToolId(Long.parseLong(request.get("dataToolId")))
+				.build();
 
 		BadgeResponses badgeResponses = null;
 
@@ -89,9 +83,7 @@ public class DataCallController {
 	@GetMapping(value = "/product")
 	@ApiOperation(value = "상품 데이터 호출")
 	public ResponseEntity<BaseResponse<ProductResponses>> getProductItems(@ApiIgnore Principal principal,
-			@RequestBody ProductDataRequest productDataRequest){
-		ModelMapper modelMapper = new ModelMapper();
-		modelMapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STRICT);
+			@RequestParam Map<String, String> request){
 
 		Long userId = null;
 		if (principal != null){
@@ -101,7 +93,10 @@ public class DataCallController {
 			}
 		}
 
-		ProductDataRequestDto productDataRequestDto = modelMapper.map(productDataRequest, ProductDataRequestDto.class);
+		ProductDataRequestDto productDataRequestDto = ProductDataRequestDto.builder()
+				.ItemsId(Long.parseLong(request.get("ItemsId")))
+				.dataToolId(Long.parseLong(request.get("dataToolId")))
+				.build();
 
 		ProductResponses productResponses = null;
 
@@ -126,9 +121,7 @@ public class DataCallController {
 	@GetMapping(value = "/sns")
 	@ApiOperation(value = "sns 데이터 호출")
 	public ResponseEntity<BaseResponse<SnsResponses>> getSnsItems(@ApiIgnore Principal principal,
-			@RequestBody SnsDataRequest snsDataRequest){
-		ModelMapper modelMapper = new ModelMapper();
-		modelMapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STRICT);
+			@RequestParam Map<String, String> request){
 
 		Long userId = null;
 		if (principal != null){
@@ -138,7 +131,10 @@ public class DataCallController {
 			}
 		}
 
-		SnsDataRequestDto snsDataRequestDto = modelMapper.map(snsDataRequest, SnsDataRequestDto.class);
+		SnsDataRequestDto snsDataRequestDto = SnsDataRequestDto.builder()
+				.dataToolId(Long.parseLong(request.get("dataToolId")))
+				.ItemsId(Long.parseLong(request.get("ItemsId")))
+				.build();
 
 		SnsResponses snsResponses = null;
 
