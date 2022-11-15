@@ -176,7 +176,7 @@ public class DataToolServiceImpl implements DataToolService{
 		Collections.sort(items, exhibitionItemComparator);
 
 		for (ExhibitionItem item : items) {
-			Badge badge = badgeRepository.findById(item.getExhibitionItemId()).get();
+			Badge badge = badgeRepository.findById(item.getExhibitionItemNumber()).get();
 			BadgeATypeResponse badgeATypeResponse = BadgeATypeResponse.builder()
 					.ImgSrc(badge.getBadgeImg())
 					.connectUrl(badge.getBadgeConnectUrl())
