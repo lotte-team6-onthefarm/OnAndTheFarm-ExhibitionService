@@ -294,6 +294,7 @@ public class ExhibitionServiceImpl implements ExhibitionService {
 			for(ExhibitionItem item  : exhibitionItemDetailList){
 				ExhibitionAccountItemDetailResponse exhibitionAccountItemDetail = new ExhibitionAccountItemDetailResponse();	// 소재 respose 선언
 				exhibitionAccountItemDetail.setExhibitionItemId(item.getExhibitionItemId());
+				exhibitionAccountItemDetail.setExhibitionItemNumber(item.getExhibitionItemNumber());
 				exhibitionAccountItemDetail.setExhibitionItemCategoryId(item.getExhibitionItemCategoryId());
 				exhibitionAccountItemDetail.setExhibitionItemPriority(item.getExhibitionItemPriority());
 

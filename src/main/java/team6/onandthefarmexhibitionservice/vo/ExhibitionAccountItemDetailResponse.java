@@ -15,6 +15,8 @@ import lombok.Setter;
 public class ExhibitionAccountItemDetailResponse {
     private Long exhibitionItemId;
 
+    private Long exhibitionItemNumber;
+
     private Long exhibitionItemCategoryId;
 
     private Integer exhibitionItemPriority;
