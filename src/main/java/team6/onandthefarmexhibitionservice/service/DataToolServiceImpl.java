@@ -138,7 +138,7 @@ public class DataToolServiceImpl implements DataToolService{
 			}
 			productATypeResponses.add(productATypeResponse);
 		}
-		productATypeResponsesResult.setProductATypeResponses(productATypeResponses);
+		productATypeResponsesResult.setResponses(productATypeResponses);
 
 		return productATypeResponsesResult;
 	}
@@ -211,7 +211,7 @@ public class DataToolServiceImpl implements DataToolService{
 			productBTypeResponses.add(productBTypeResponse);
 		}
 
-		productBTypeResponsesResult.setBTypeResponses(productBTypeResponses);
+		productBTypeResponsesResult.setResponses(productBTypeResponses);
 
 		return productBTypeResponsesResult;
 	}
@@ -238,7 +238,7 @@ public class DataToolServiceImpl implements DataToolService{
 					.build();
 			productCTypeResponses.add(productCTypeResponse);
 		}
-		productCTypeResponseResult.setProductCTypeResponses(productCTypeResponses);
+		productCTypeResponseResult.setResponses(productCTypeResponses);
 
 		return productCTypeResponseResult;
 	}

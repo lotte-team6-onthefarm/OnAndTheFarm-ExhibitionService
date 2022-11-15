@@ -14,5 +14,5 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 public class ProductBTypeResponses implements ProductResponses {
-	private List<ProductBTypeResponse> bTypeResponses;
+	private List<ProductBTypeResponse> responses;
 }
