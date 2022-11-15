@@ -11,5 +11,5 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class BadgeDataRequestDto {
 	private Long dataToolId;
-	private Long ItemsId;
+	private Long itemsId;
 }

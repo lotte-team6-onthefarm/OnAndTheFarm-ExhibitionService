@@ -3,8 +3,6 @@ package team6.onandthefarmexhibitionservice.controller;
 import java.security.Principal;
 import java.util.Map;
 
-import org.modelmapper.ModelMapper;
-import org.modelmapper.convention.MatchingStrategies;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -36,7 +34,7 @@ public class DataCallController {
 			@RequestParam Map<String, String> request){
 
 		BannerDataRequestDto bannerDataRequestDto = BannerDataRequestDto.builder()
-				.ItemsId(Long.parseLong(request.get("ItemsId")))
+				.itemsId(Long.parseLong(request.get("itemsId")))
 				.dataToolId(Long.parseLong(request.get("dataToolId")))
 				.build();
 
@@ -61,7 +59,7 @@ public class DataCallController {
 			@RequestParam Map<String, String> request){
 
 		BadgeDataRequestDto badgeDataRequestDto = BadgeDataRequestDto.builder()
-				.ItemsId(Long.parseLong(request.get("ItemsId")))
+				.itemsId(Long.parseLong(request.get("itemsId")))
 				.dataToolId(Long.parseLong(request.get("dataToolId")))
 				.build();
 
@@ -94,7 +92,7 @@ public class DataCallController {
 		}
 
 		ProductDataRequestDto productDataRequestDto = ProductDataRequestDto.builder()
-				.ItemsId(Long.parseLong(request.get("ItemsId")))
+				.itemsId(Long.parseLong(request.get("itemsId")))
 				.dataToolId(Long.parseLong(request.get("dataToolId")))
 				.build();
 
@@ -133,7 +131,7 @@ public class DataCallController {
 
 		SnsDataRequestDto snsDataRequestDto = SnsDataRequestDto.builder()
 				.dataToolId(Long.parseLong(request.get("dataToolId")))
-				.ItemsId(Long.parseLong(request.get("ItemsId")))
+				.itemsId(Long.parseLong(request.get("itemsId")))
 				.build();
 
 		SnsResponses snsResponses = null;
