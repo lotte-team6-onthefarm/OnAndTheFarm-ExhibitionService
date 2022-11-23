@@ -44,7 +44,7 @@ public interface ExhibitionService {
 			ExhibitionAccountPriorityUpdateFormsRequestDto exhibitionAccountPriorityUpdateFormsRequestDto);
 	List<Long> updateExhibitionTemporaryPriority(
 			ExhibitionTemporaryPriorityUpdateFormsRequestDto exhibitionTemporaryPriorityUpdateFormsRequestDto);
-	List<ExhibitionTemporaryAllResponse> getAllExhibitionTemporary();
+	List<ExhibitionTemporaryAllResponse> getAllExhibitionTemporary(String time);
 	List<ExhibitionAllResponse> getAllExhibition();
 	List<DataPickerResponse> getAllDataPicker();
 }

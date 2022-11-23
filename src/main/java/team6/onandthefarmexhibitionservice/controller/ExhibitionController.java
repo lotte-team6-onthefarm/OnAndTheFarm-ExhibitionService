@@ -378,10 +378,11 @@ public class ExhibitionController {
 		return new ResponseEntity<>(baseResponse, HttpStatus.OK);
 	}
 
-	@GetMapping(value = "/temporary/all")
+	@GetMapping(value = "/temporary/{time}")
 	@ApiOperation(value = "전시 temp 전부 조회(main view)")
-	public ResponseEntity<BaseResponse<ExhibitionTemporaryAllResponse>> getAllExhibitionTemporary(@ApiIgnore Principal principal){
-		List<ExhibitionTemporaryAllResponse> exhibitionTemporaries = exhibitionService.getAllExhibitionTemporary();
+	public ResponseEntity<BaseResponse<ExhibitionTemporaryAllResponse>> getAllExhibitionTemporary(@ApiIgnore Principal principal,
+			@PathVariable(value="time") String time){
+		List<ExhibitionTemporaryAllResponse> exhibitionTemporaries = exhibitionService.getAllExhibitionTemporary(time);
 
 		BaseResponse baseResponse = BaseResponse.builder()
 				.httpStatus(HttpStatus.OK)

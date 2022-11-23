@@ -313,6 +313,15 @@ public class ExhibitionServiceImpl implements ExhibitionService {
 		ExhibitionTemporary exhibitionTemporary = modelMapper.map(exhibitionTemporaryFormRequestDto, ExhibitionTemporary.class);
 
 		exhibitionTemporary.setExhibitionTemporaryCategory(exhibitionCategoryRepository.findById(exhibitionTemporaryFormRequestDto.getExhibitionTemporaryCategoryId()).get());
+
+		if(exhibitionTemporaryFormRequestDto.getTime().equals("breakfast")){
+			exhibitionTemporary.setExhibitionTemporaryStartTime(9L);
+		} else if (exhibitionTemporaryFormRequestDto.getTime().equals("lunch")){
+			exhibitionTemporary.setExhibitionTemporaryStartTime(12L);
+		} else if (exhibitionTemporaryFormRequestDto.getTime().equals("dinner")) {
+			exhibitionTemporary.setExhibitionTemporaryStartTime(18L);
+		}
+
 		Long exhibitionTemporaryId = exhibitionTemporaryRepository.save(exhibitionTemporary).getExhibitionTemporaryId();
 
 		return exhibitionTemporaryId;
@@ -346,8 +355,15 @@ public class ExhibitionServiceImpl implements ExhibitionService {
 	}
 
 	@Override
-	public List<ExhibitionTemporaryAllResponse> getAllExhibitionTemporary(){
-		List<ExhibitionTemporary> exhibitionTemporaries = (List<ExhibitionTemporary>)exhibitionTemporaryRepository.findAll(Sort.by(Sort.Direction.ASC, "exhibitionTemporaryPriority"));
+	public List<ExhibitionTemporaryAllResponse> getAllExhibitionTemporary(String time){
+		List<ExhibitionTemporary> exhibitionTemporaries = new ArrayList<>();
+		if(time.equals("breakfast")){
+			exhibitionTemporaries = exhibitionTemporaryRepository.findExhibitionTemporariesBy(9L);
+		} else if (time.equals("lunch")){
+			exhibitionTemporaries = exhibitionTemporaryRepository.findExhibitionTemporariesBy(12L);
+		} else if (time.equals("dinner")){
+			exhibitionTemporaries = exhibitionTemporaryRepository.findExhibitionTemporariesBy(18L);
+		}
 		List<ExhibitionTemporaryAllResponse> exhibitionTemporaryAllResponses = new ArrayList<>();
 		for (ExhibitionTemporary exhibitionTemporary : exhibitionTemporaries) {
 			ExhibitionAccount exhibitionAccount = exhibitionAccountRepository.findById(exhibitionTemporary.getExhibitionTemporaryAccountId()).get();
