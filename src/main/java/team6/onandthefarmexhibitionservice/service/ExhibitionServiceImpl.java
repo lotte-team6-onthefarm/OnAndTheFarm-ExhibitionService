@@ -75,6 +75,10 @@ public class ExhibitionServiceImpl implements ExhibitionService {
 	private DateUtils dateUtils;
 	private Environment env;
 
+	private String breakfast = "2022.11.23 18:01:00";
+	private String lunch = "2022.11.23 18:02:00";
+	private String dinner = "2022.11.23 18:03:00";
+
 	public ExhibitionServiceImpl(ExhibitionAccountRepository exhibitionAccountRepository,
 								ExhibitionCategoryRepository exhibitionCategoryRepository,
 								ExhibitionItemsRepository exhibitionItemsRepository,
@@ -315,11 +319,11 @@ public class ExhibitionServiceImpl implements ExhibitionService {
 		exhibitionTemporary.setExhibitionTemporaryCategory(exhibitionCategoryRepository.findById(exhibitionTemporaryFormRequestDto.getExhibitionTemporaryCategoryId()).get());
 
 		if(exhibitionTemporaryFormRequestDto.getTime().equals("breakfast")){
-			exhibitionTemporary.setExhibitionTemporaryStartTime("2022.11.23 16:15:00");
+			exhibitionTemporary.setExhibitionTemporaryStartTime(breakfast);
 		} else if (exhibitionTemporaryFormRequestDto.getTime().equals("lunch")){
-			exhibitionTemporary.setExhibitionTemporaryStartTime("2022.11.23 15:16:00");
+			exhibitionTemporary.setExhibitionTemporaryStartTime(lunch);
 		} else if (exhibitionTemporaryFormRequestDto.getTime().equals("dinner")) {
-			exhibitionTemporary.setExhibitionTemporaryStartTime("2022.11.23 15:17:00");
+			exhibitionTemporary.setExhibitionTemporaryStartTime(dinner);
 		}
 
 		Long exhibitionTemporaryId = exhibitionTemporaryRepository.save(exhibitionTemporary).getExhibitionTemporaryId();
@@ -358,11 +362,11 @@ public class ExhibitionServiceImpl implements ExhibitionService {
 	public List<ExhibitionTemporaryAllResponse> getAllExhibitionTemporary(String time){
 		List<ExhibitionTemporary> exhibitionTemporaries = new ArrayList<>();
 		if(time.equals("breakfast")){
-			exhibitionTemporaries = exhibitionTemporaryRepository.findExhibitionTemporariesBy("2022.11.23 15:15:00");
+			exhibitionTemporaries = exhibitionTemporaryRepository.findExhibitionTemporariesBy(breakfast);
 		} else if (time.equals("lunch")){
-			exhibitionTemporaries = exhibitionTemporaryRepository.findExhibitionTemporariesBy("2022.11.23 15:16:00");
+			exhibitionTemporaries = exhibitionTemporaryRepository.findExhibitionTemporariesBy(lunch);
 		} else if (time.equals("dinner")){
-			exhibitionTemporaries = exhibitionTemporaryRepository.findExhibitionTemporariesBy("2022.11.23 15:17:00");
+			exhibitionTemporaries = exhibitionTemporaryRepository.findExhibitionTemporariesBy(dinner);
 		}
 		List<ExhibitionTemporaryAllResponse> exhibitionTemporaryAllResponses = new ArrayList<>();
 		for (ExhibitionTemporary exhibitionTemporary : exhibitionTemporaries) {
