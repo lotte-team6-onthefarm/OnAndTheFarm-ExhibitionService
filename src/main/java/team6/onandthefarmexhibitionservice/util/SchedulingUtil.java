@@ -8,7 +8,7 @@ import team6.onandthefarmexhibitionservice.entity.ExhibitionTemporary;
 import team6.onandthefarmexhibitionservice.repository.ExhibitionCategoryRepository;
 import team6.onandthefarmexhibitionservice.repository.ExhibitionRepository;
 import team6.onandthefarmexhibitionservice.repository.ExhibitionTemporaryRepository;
-
+import org.springframework.transaction.annotation.Transactional;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -16,6 +16,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Component
+@Transactional
 public class SchedulingUtil {
 
     private final ExhibitionTemporaryRepository exhibitionTemporaryRepository;
@@ -47,37 +48,37 @@ public class SchedulingUtil {
 
         cal.setTime(date);
         String startTime = timeFormat.format(cal.getTime())+":00";
-        //cal.add(Calendar.MINUTE, 1);
         String endTime = timeFormat.format(cal.getTime())+":59";
-
-        System.out.println("!!!!!!!!!!!time : "+date);
-        System.out.println("!!!!!!!!!!!startTime : "+startTime);
-        System.out.println("!!!!!!!!!!!endTime : "+endTime);
 
         List<ExhibitionTemporary> exhibitionTemporaryList = exhibitionTemporaryRepository.getExhibitionTemporaryByExhibitionTemporaryStartTimeIsBetween(startTime, endTime);
 
-        //exhibition에 이전 데이터 false로 변경
-        List<Exhibition> exhibitionList = exhibitionRepository.getTrueExhibitions();
-        for(Exhibition exhibition : exhibitionList){
-            exhibition.setExhibitionActivation(false);
-            exhibition.setExhibitionStatus(false);
-            exhibition.setExhibitionTemporaryModifiedAt(dateUtils.transDate(env.getProperty("dateutils.format")));
-        }
+        if(!exhibitionTemporaryList.isEmpty()) {
+            //exhibition에 이전 데이터 false로 변경
+            List<Exhibition> exhibitionList = exhibitionRepository.getTrueExhibitions();
+            System.out.println("!!!!!!!!!!!!!!!!!!!!exhibition : "+exhibitionList.size());
+            for (Exhibition exhibition : exhibitionList) {
+                System.out.println("!!!!!!!!!!!!!!!!!!!!!!id : "+exhibition.getExhibitionId());
+                Exhibition savedExhibition = exhibitionRepository.findById(exhibition.getExhibitionId()).get();
+                savedExhibition.setExhibitionActivation(false);
+                savedExhibition.setExhibitionStatus(false);
+                savedExhibition.setExhibitionTemporaryModifiedAt(dateUtils.transDate(env.getProperty("dateutils.format")));
+            }
 
-        //exhibition에 exhibitionTemp 데이터 넣기
-        for(ExhibitionTemporary exhibitionTemporary : exhibitionTemporaryList){
-            Exhibition exhibition = Exhibition.builder()
-                    .exhibitionAccountId(exhibitionTemporary.getExhibitionTemporaryAccountId())
-                    .exhibitionActivation(true)
-                    .exhibitionStatus(true)
-                    .exhibitionDataPickerId(exhibitionTemporary.getExhibitionTemporaryDataPicker())
-                    .exhibitionItemsId(exhibitionTemporary.getExhibitionTemporaryItemsId())
-                    .exhibitionModuleName(exhibitionTemporary.getExhibitionTemporaryModuleName())
-                    .exhibitionPriority(exhibitionTemporary.getExhibitionTemporaryPriority())
-                    .exhibitionCategory(exhibitionCategoryRepository.findById(exhibitionTemporary.getExhibitionTemporaryCategory().getExhibitionCategoryId()).get())
-                    .build();
-            exhibition.setExhibitionTemporaryCreatedAt(dateUtils.transDate(env.getProperty("dateutils.format")));
-            exhibitionRepository.save(exhibition);
+            //exhibition에 exhibitionTemp 데이터 넣기
+            for (ExhibitionTemporary exhibitionTemporary : exhibitionTemporaryList) {
+                Exhibition exhibition = Exhibition.builder()
+                        .exhibitionAccountId(exhibitionTemporary.getExhibitionTemporaryAccountId())
+                        .exhibitionActivation(true)
+                        .exhibitionStatus(true)
+                        .exhibitionDataPickerId(exhibitionTemporary.getExhibitionTemporaryDataPicker())
+                        .exhibitionItemsId(exhibitionTemporary.getExhibitionTemporaryItemsId())
+                        .exhibitionModuleName(exhibitionTemporary.getExhibitionTemporaryModuleName())
+                        .exhibitionPriority(exhibitionTemporary.getExhibitionTemporaryPriority())
+                        .exhibitionCategory(exhibitionCategoryRepository.findById(exhibitionTemporary.getExhibitionTemporaryCategory().getExhibitionCategoryId()).get())
+                        .build();
+                exhibition.setExhibitionTemporaryCreatedAt(dateUtils.transDate(env.getProperty("dateutils.format")));
+                exhibitionRepository.save(exhibition);
+            }
         }
 
     }
