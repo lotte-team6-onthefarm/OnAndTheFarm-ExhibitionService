@@ -42,9 +42,9 @@ public class ExhibitionTemporary {
 
 	private Long exhibitionTemporaryDataPicker;
 
-	private Long exhibitionTemporaryStartTime;
+	private String exhibitionTemporaryStartTime;
 
-	private Long exhibitionTemporaryEndTime;
+	private String exhibitionTemporaryEndTime;
 
 	private Long exhibitionTemporaryAccountId;
 
