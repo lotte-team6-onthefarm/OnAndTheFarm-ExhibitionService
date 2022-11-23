@@ -56,6 +56,4 @@ public class Exhibition {
 
 	private String exhibitionTemporaryModifiedAt;
 
-	private String time;
-
 }

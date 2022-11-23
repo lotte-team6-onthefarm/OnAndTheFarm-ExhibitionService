@@ -315,11 +315,11 @@ public class ExhibitionServiceImpl implements ExhibitionService {
 		exhibitionTemporary.setExhibitionTemporaryCategory(exhibitionCategoryRepository.findById(exhibitionTemporaryFormRequestDto.getExhibitionTemporaryCategoryId()).get());
 
 		if(exhibitionTemporaryFormRequestDto.getTime().equals("breakfast")){
-			exhibitionTemporary.setExhibitionTemporaryStartTime(9L);
+			exhibitionTemporary.setExhibitionTemporaryStartTime("2022.11.23 16:15:00");
 		} else if (exhibitionTemporaryFormRequestDto.getTime().equals("lunch")){
-			exhibitionTemporary.setExhibitionTemporaryStartTime(12L);
+			exhibitionTemporary.setExhibitionTemporaryStartTime("2022.11.23 15:16:00");
 		} else if (exhibitionTemporaryFormRequestDto.getTime().equals("dinner")) {
-			exhibitionTemporary.setExhibitionTemporaryStartTime(18L);
+			exhibitionTemporary.setExhibitionTemporaryStartTime("2022.11.23 15:17:00");
 		}
 
 		Long exhibitionTemporaryId = exhibitionTemporaryRepository.save(exhibitionTemporary).getExhibitionTemporaryId();
@@ -358,11 +358,11 @@ public class ExhibitionServiceImpl implements ExhibitionService {
 	public List<ExhibitionTemporaryAllResponse> getAllExhibitionTemporary(String time){
 		List<ExhibitionTemporary> exhibitionTemporaries = new ArrayList<>();
 		if(time.equals("breakfast")){
-			exhibitionTemporaries = exhibitionTemporaryRepository.findExhibitionTemporariesBy(9L);
+			exhibitionTemporaries = exhibitionTemporaryRepository.findExhibitionTemporariesBy("2022.11.23 15:15:00");
 		} else if (time.equals("lunch")){
-			exhibitionTemporaries = exhibitionTemporaryRepository.findExhibitionTemporariesBy(12L);
+			exhibitionTemporaries = exhibitionTemporaryRepository.findExhibitionTemporariesBy("2022.11.23 15:16:00");
 		} else if (time.equals("dinner")){
-			exhibitionTemporaries = exhibitionTemporaryRepository.findExhibitionTemporariesBy(18L);
+			exhibitionTemporaries = exhibitionTemporaryRepository.findExhibitionTemporariesBy("2022.11.23 15:17:00");
 		}
 		List<ExhibitionTemporaryAllResponse> exhibitionTemporaryAllResponses = new ArrayList<>();
 		for (ExhibitionTemporary exhibitionTemporary : exhibitionTemporaries) {
