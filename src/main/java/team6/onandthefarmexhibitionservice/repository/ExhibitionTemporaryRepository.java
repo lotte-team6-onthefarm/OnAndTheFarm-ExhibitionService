@@ -12,7 +12,7 @@ import team6.onandthefarmexhibitionservice.entity.ExhibitionTemporary;
 public interface ExhibitionTemporaryRepository extends CrudRepository<ExhibitionTemporary, Long> {
 	List<ExhibitionTemporary> findAll(Sort sort);
 
-	@Query("select e from ExhibitionTemporary e where e.exhibitionTemporaryStartTime =:time order by 'exhibitionTemporaryPriority' ASC")
+	@Query("select e from ExhibitionTemporary e where e.exhibitionTemporaryStartTime =:time order by 'exhibitionTemporaryPriority' DESC ")
 	List<ExhibitionTemporary> findExhibitionTemporariesBy(@Param("time") String time);
 
 	List<ExhibitionTemporary> getExhibitionTemporaryByExhibitionTemporaryStartTimeIsBetween(String startTime, String endTime);
