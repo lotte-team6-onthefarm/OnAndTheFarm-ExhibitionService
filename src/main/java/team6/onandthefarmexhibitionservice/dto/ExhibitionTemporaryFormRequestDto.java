@@ -22,4 +22,6 @@ public class ExhibitionTemporaryFormRequestDto {
 	private Integer exhibitionTemporaryPriority;
 
 	private Boolean exhibitionActivation;
+
+	private String time;
 }

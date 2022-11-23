@@ -24,4 +24,6 @@ public class ExhibitionTemporaryFormRequest {
 	private Long exhibitionTemporaryItemsId;
 
 	private Integer exhibitionTemporaryPriority;
+
+	private String Time;
 }
